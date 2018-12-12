@@ -1,17 +1,16 @@
 package logico;
 
-import java.time.LocalDate;
-
 public class Doctor extends Persona {
 	private Paciente[] pacientes;
 	private float balance;
 	private boolean activo;
-	public Doctor(String cedula, String nombre, String apellido, LocalDate FechaNacimiento, String genero, String email,
-			Paciente[] pacientes, float balance, boolean activo) {
-		super(cedula, nombre, apellido, FechaNacimiento, genero, email);
+	
+	public Doctor(String cedula, String nombre, String apellido, String genero, String email,String Telefono, String Celular,
+			Paciente[] pacientes, float balance) {
+		super(cedula, nombre, apellido, genero, email, Telefono, Celular);
 		this.pacientes = pacientes;
 		this.balance = balance;
-		this.activo = activo;
+		this.activo = true;
 	}
 	public float getBalance() {
 		return balance;

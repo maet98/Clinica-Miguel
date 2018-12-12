@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.LookAndFeel;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.border.EmptyBorder;
 import java.awt.Toolkit;
 import java.awt.Color;
@@ -12,6 +15,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.awt.event.ActionEvent;
 
 public class PrincipalClinica extends JFrame {
 
@@ -24,6 +30,12 @@ public class PrincipalClinica extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+						if("Nimbus".equals(info.getName())) {
+							UIManager.setLookAndFeel(info.getClassName());
+							break;
+						}
+					}
 					PrincipalClinica frame = new PrincipalClinica();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -49,6 +61,18 @@ public class PrincipalClinica extends JFrame {
 		menuBar.add(mnPacientes);
 		
 		JMenuItem mntmRegistrarPaciente = new JMenuItem("Registrar Paciente");
+		mntmRegistrarPaciente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					RegistrarPaciente nuevo = new RegistrarPaciente();
+					nuevo.setModal(true);
+					nuevo.setVisible(true);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				
+			}
+		});
 		mntmRegistrarPaciente.setIcon(new ImageIcon(PrincipalClinica.class.getResource("/imagenes/dermatology.png")));
 		mnPacientes.add(mntmRegistrarPaciente);
 		

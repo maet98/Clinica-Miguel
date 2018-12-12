@@ -1,34 +1,27 @@
 package logico;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 public abstract class Persona {
 	protected String Cedula;
 	protected String nombre;
 	protected String apellido;
-	protected ArrayList<String> telefono;
-	protected LocalDate FechaNacimiento;
+	protected String[] telefono;
 	protected String genero;
 	protected String email;
 	
-	public Persona(String cedula, String nombre, String apellido,LocalDate FechaNacimiento, String genero, String email) {
+	public Persona(String cedula, String nombre, String apellido, String genero, String email,String Telefono, String Celular) {
 		super();
 		Cedula = cedula;
 		this.nombre = nombre;
-		this.apellido = apellido;
-		this.FechaNacimiento = FechaNacimiento;
+		this.apellido =apellido;
 		this.genero = genero;
 		this.email = email;
+		this.telefono = new String[2];
+		telefono[0] = Telefono;
+		telefono[1] = Celular;
 	}
 	
-	public int getEdad() {
-		return AgeCalculator.calculateAge(FechaNacimiento, LocalDate.now());
-	}
-
-	public void setFechaNacimiento(LocalDate FechaNacimiento) {
-		this.FechaNacimiento = FechaNacimiento;
-	}
+	
 
 	public String getGenero() {
 		return genero;
@@ -46,9 +39,7 @@ public abstract class Persona {
 		this.email = email;
 	}
 
-	public void setTelefono(ArrayList<String> telefono) {
-		this.telefono = telefono;
-	}
+	
 
 	public String getCedula() {
 		return Cedula;
@@ -68,10 +59,9 @@ public abstract class Persona {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public ArrayList<String> getTelefono() {
+	
+	public String[] getTelefono() {
 		return telefono;
 	}
-	public void addTelefono(String tele) {
-		telefono.add(tele);
-	}
+	
 }

@@ -1,32 +1,37 @@
 package logico;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Paciente extends Persona{
 	private float balance;
-	private Recibo[] recibos;
+	private LocalDate FechaNacimiento;
+	private ArrayList<Recibo> recibos;
 	private String Direccion;
 	
-	public Paciente(String cedula, String nombre, String apellido, LocalDate FechaNacimiento, String genero,
-			String email, float balance, Recibo[] recibos, String direccion) {
-		super(cedula, nombre, apellido, FechaNacimiento, genero, email);
+	public Paciente(String cedula, String nombre, String apellido, LocalDate FechaNacimiento, String genero,String Telefono, String Celular,
+			String email, float balance, String direccion) {
+		super(cedula, nombre, apellido, genero, email,Telefono, Celular);
 		this.balance = balance;
-		this.recibos = recibos;
+		this.FechaNacimiento = FechaNacimiento;
+		this.recibos = new ArrayList<>();
 		Direccion = direccion;
 	}
 	
+	public int getEdad() {
+		return AgeCalculator.calculateAge(FechaNacimiento, LocalDate.now());
+	}
+
 	public float getBalance() {
 		return balance;
 	}
 	public void setBalance(float balance) {
 		this.balance = balance;
 	}
-	public Recibo[] getRecibos() {
+	public ArrayList<Recibo> getRecibos() {
 		return recibos;
 	}
-	public void setRecibos(Recibo[] recibos) {
-		this.recibos = recibos;
-	}
+	
 	public String getDireccion() {
 		return Direccion;
 	}
