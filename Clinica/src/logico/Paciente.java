@@ -8,6 +8,7 @@ public class Paciente extends Persona{
 	private LocalDate FechaNacimiento;
 	private ArrayList<Recibo> recibos;
 	private String Direccion;
+	private ArrayList<Tratamiento> tratamientos;
 	
 	public Paciente(String cedula, String nombre, String apellido, LocalDate FechaNacimiento, String genero,String Telefono, String Celular,
 			String email, float balance, String direccion) {
@@ -16,8 +17,13 @@ public class Paciente extends Persona{
 		this.FechaNacimiento = FechaNacimiento;
 		this.recibos = new ArrayList<>();
 		Direccion = direccion;
+		tratamientos = new ArrayList<>();
 	}
 	
+	public ArrayList<Tratamiento> getTratamientos() {
+		return tratamientos;
+	}
+
 	public int getEdad() {
 		return AgeCalculator.calculateAge(FechaNacimiento, LocalDate.now());
 	}
